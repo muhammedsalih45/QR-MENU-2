@@ -1,0 +1,27 @@
+/* src/App.css */
+.app-container {
+  display: flex;
+  background-color: gray;
+}
+
+.menu-container {
+  width: 20%;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.content-container {
+  width: 80%;
+  padding: 10px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+
+}
+
+ul li {
+  margin: 10px 0;
+  cursor: pointer;
+}
