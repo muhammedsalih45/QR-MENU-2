@@ -1,11 +1,12 @@
 // src/components/Content.jsx
 import React from 'react';
 import Form from '../components/Form';
+import Foods from '../components/Foods';
 function Content({ selectedComponent }) {
   if (selectedComponent === 'Form') {
     return <Form />;
-  } else if (selectedComponent === 'Users') {
-    return <div>Users Content</div>;
+  } else if (selectedComponent === 'Foods') {
+    return <Foods />;
   } else if (selectedComponent === 'Settings') {
     return <div>Settings Content</div>;
   } else {

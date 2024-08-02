@@ -1,17 +1,19 @@
-.menu{
-    height: 1000px;
-    width: 15%;
-    background-color: #f0f0f0;    
+.menu {
+  min-height: 1000px;
+  max-width: 15%;
+  padding: 45px;
 }
 
-.side-link{
-    font-size: 25px;
-    padding-top: 10px;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 50px;
-    margin-left: 50px;
-    height: 20px;
-    width: 100px;
-    background-color: #f0f0f0;
+.side-link {
+  font-size: 25px;
+  padding-top: 10px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  height: 20px;
+  width: 100px;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

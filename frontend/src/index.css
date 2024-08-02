@@ -1,14 +1,18 @@
 /* src/App.css */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .app-container {
-  
   display: flex;
-  background-color: rgb(255, 211, 141);
+  background-color: rgb(255, 183, 68);
 }
 
 .menu-container {
-  
   width: 20%;
-  background-color: #f0f0f0;
+  background-color: #000000;
   padding: 10px;
 }
 
