@@ -1,10 +1,12 @@
 /* src/App.css */
 .app-container {
+  
   display: flex;
-  background-color: gray;
+  background-color: rgb(255, 211, 141);
 }
 
 .menu-container {
+  
   width: 20%;
   background-color: #f0f0f0;
   padding: 10px;
@@ -18,7 +20,6 @@
 nav ul {
   list-style: none;
   padding: 0;
-
 }
 
 ul li {
