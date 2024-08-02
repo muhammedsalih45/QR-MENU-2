@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { useState } from 'react';
 import Menu from './components/Menu';
-import Content from './components/Content';
+import Content from './components/Content'; 
 import './App.css';
 
 function App() {
