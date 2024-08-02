@@ -7,6 +7,8 @@ const db = require('./db');
 app.use(cors());
 app.use(express.json());
 
+
+
 app.post('/api/products/create', async (req, res) => {
   const { name, price, description } = req.body;
 
@@ -29,6 +31,17 @@ app.post('/api/products/create', async (req, res) => {
     console.error('Error creating product:', error);
     res.status(500).send('Internal server error');
   }
+});
+
+app.get('/api/products', async (req, res) => { 
+
+  try {
+    const products = await Products.findAll();
+    res.json(products);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).send('Internal server error');  
+  }   
 });
 
 (async () => {
