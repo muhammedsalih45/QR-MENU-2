@@ -63,8 +63,8 @@ function Form() {
           placeholder="Ürün Açıklamasını Giriniz"
         ></textarea>
         <div className="button-container">
-          <button className="inp-button" type="submit">
-            Ekle
+          <button type="button" class="btn btn-outline-danger button-edit">
+            EKLE
           </button>
         </div>
         {error && <div className="error-message">{error}</div>}

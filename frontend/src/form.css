@@ -8,10 +8,13 @@ input[type='number']::-webkit-inner-spin-button {
 .main-container {
   display: absolute;
   min-width: 100%;
-  background-color: #ff7878;
+  background-color: #01928b7f;
   padding: 40px;
   border-collapse: collapse;
   border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .inp-container {
@@ -20,7 +23,7 @@ input[type='number']::-webkit-inner-spin-button {
   display: flex;
   margin-bottom: 20px;
   text-align: center;
-  border-radius: 30px;
+  border-radius: 10px;
   border: none;
   outline: none;
   font-size: 18px;
@@ -38,7 +41,7 @@ input[type='number']::-webkit-inner-spin-button {
 .inp-button {
   width: 30%;
   height: 50px;
-  background-color: #007bff;
+  background-color: #ff5900;
   color: white;
   border-radius: 30px;
   border: none;
@@ -59,9 +62,18 @@ button:hover {
   margin-top: 20px;
 }
 
+.button-edit {
+  color: white;
+  width: 300px;
+  font-weight: bold;
+}
+
 textarea {
   font-size: medium;
   min-width: 100%;
   min-height: 30%;
+  min-height: 100px;
+  align-items: center;
+  justify-content: center;
   resize: none;
 }

@@ -103,15 +103,7 @@ const Table = () => {
           <th>Occupation</th>
           <th>Contact</th>
           <th>Education</th>
-          <th>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="check1"
-              name="option1"
-              value="something"
-            />{' '}
-          </th>
+          <th>Visible</th>
         </tr>
       </thead>
       <tbody>
@@ -136,13 +128,6 @@ const Table = () => {
             <td className="toggle">
               <FontAwesomeIcon
                 icon={row.isToggled ? faToggleOn : faToggleOff}
-                style={{
-                  color: 'black',
-                  backgroundColor: ' rgb(255, 183, 68) ',
-                  padding: '5px',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                }}
                 onClick={() => handleToggleChange(row.id)}
               />
             </td>
