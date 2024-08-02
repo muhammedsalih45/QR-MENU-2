@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import '../table.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faToggleOn ,faToggleOff} from '@fortawesome/free-solid-svg-icons';
+
 const Table = () => {
   const [rows, setRows] = useState([
     {
@@ -9,6 +12,7 @@ const Table = () => {
       contact: '+63 983 0962 971',
       education: 'NY University',
       isSelected: false,
+      isToggled: false, // Yeni state
     },
     {
       id: 4616,
@@ -17,6 +21,7 @@ const Table = () => {
       contact: '+02 020 3994 929',
       education: 'London College',
       isSelected: false,
+      isToggled: false,
     },
     {
       id: 9841,
@@ -25,6 +30,7 @@ const Table = () => {
       contact: '+01 352 1125 0192',
       education: 'Senior High',
       isSelected: false,
+      isToggled: false,
     },
     {
       id: 9548,
@@ -33,6 +39,7 @@ const Table = () => {
       contact: '+92 020 3994 929',
       education: 'College',
       isSelected: false,
+      isToggled: false,
     },
     {
       id: 4616,
@@ -41,6 +48,7 @@ const Table = () => {
       contact: '+02 020 3994 929',
       education: 'London College',
       isSelected: false,
+      isToggled: false,
     },
     {
       id: 9841,
@@ -49,6 +57,7 @@ const Table = () => {
       contact: '+01 352 1125 0192',
       education: 'Senior High',
       isSelected: false,
+      isToggled: false,
     },
     {
       id: 9548,
@@ -57,8 +66,10 @@ const Table = () => {
       contact: '+92 020 3994 929',
       education: 'College',
       isSelected: false,
+      isToggled: false,
     },
   ]);
+
 
   const handleCheckboxChange = (id) => {
     setRows((prevRows) =>
@@ -68,6 +79,13 @@ const Table = () => {
     );
   };
 
+  const handleToggleChange = (id) => {
+    setRows((prevRows) =>
+      prevRows.map((row) =>
+        row.id === id ? { ...row, isToggled: !row.isToggled } : row
+      )
+    );
+  };
   return (
     <table className="table">
       <thead>
@@ -100,8 +118,10 @@ const Table = () => {
             <td>{row.occupation}</td>
             <td>{row.contact}</td>
             <td>{row.education}</td>
-            <td>
-              <input type="checkbox" />
+            <td className="toggle">
+              <FontAwesomeIcon icon={row.isToggled ? faToggleOn : faToggleOff} 
+              style={{ color: 'black',backgroundColor:' rgb(255, 183, 68) ' , padding: '5px', borderRadius: '5px', cursor: 'pointer'}}
+              onClick={() => handleToggleChange(row.id)}/>
             </td>
           </tr>
         ))}
