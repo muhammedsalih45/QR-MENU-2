@@ -55,3 +55,17 @@ body {
 .table-checkbox-left {
   text-align: left;
 }
+
+.table .faded {
+  color: #999;
+  text-decoration: line-through;
+  background-color: #f0f0f0;
+}
+
+.table .disabled input,
+.table .disabled select,
+.table .disabled textarea {
+  background-color: #939393;
+  color: #999;
+  cursor: not-allowed;
+}

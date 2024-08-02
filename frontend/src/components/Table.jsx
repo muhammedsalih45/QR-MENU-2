@@ -12,7 +12,7 @@ const Table = () => {
       contact: '+63 983 0962 971',
       education: 'NY University',
       isSelected: false,
-      isToggled: false, // Yeni state
+      isToggled: false,
     },
     {
       id: 4616,
@@ -85,13 +85,14 @@ const Table = () => {
       ),
     );
   };
+
   return (
     <table className="table">
       <thead className="table-column">
         <tr>
           <th style={{ textAlign: 'left' }}>
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               id="check1"
               name="option1"
@@ -108,16 +109,17 @@ const Table = () => {
       </thead>
       <tbody>
         {rows.map(row => (
-          <tr key={row.id}>
+          <tr key={row.id} className={row.isToggled ? 'faded disabled' : ''}>
             <td>
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="check1"
                 name="option1"
                 value="something"
                 checked={row.isSelected}
                 onChange={() => handleCheckboxChange(row.id)}
+                disabled={row.isToggled}
               />
             </td>
             <td>{row.id}</td>
