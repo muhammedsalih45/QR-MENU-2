@@ -11,13 +11,11 @@ function Form() {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const data = [name, price, description];
-
     try {
-      const response = await fetch('http://localhost:3000/api/data', {
+      const response = await fetch('http://localhost:5000/api/data/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(name, price, description),
       });
 
       if (response.ok) {
