@@ -35,6 +35,12 @@
   margin-left: 10px;
 }
 
+button:hover {
+  background-color: #ff7878;
+  color: black !important;
+  transition: 0.5s;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
