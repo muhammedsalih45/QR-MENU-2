@@ -8,18 +8,21 @@ function Form() {
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    
+
     try {
-      const response = await fetch('http://localhost:5000/api/products/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await fetch(
+        'http://localhost:5000/api/products/create',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, price, description }),
         },
-        body: JSON.stringify({ name, price, description })
-      });
-  
+      );
+
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -34,7 +37,7 @@ function Form() {
       setError('Error adding product');
     }
   };
-  
+
   return (
     <div>
       <form className="main-container" onSubmit={handleSubmit}>
@@ -42,21 +45,21 @@ function Form() {
         <input
           className="inp-container"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
           type="text"
           placeholder="Ürün İsmini Giriniz"
         />
         <input
           className="inp-container"
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={e => setPrice(e.target.value)}
           type="number"
           placeholder="Ürün Fiyat Bilgisini Giriniz"
         />
         <textarea
           className="inp-container"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={e => setDescription(e.target.value)}
           placeholder="Ürün Açıklamasını Giriniz"
         ></textarea>
         <div className="button-container">
