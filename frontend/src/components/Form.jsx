@@ -41,7 +41,7 @@ function Form() {
   return (
     <div>
       <form className="main-container" onSubmit={handleSubmit}>
-        <fieldset className="header">Kayıt Formu</fieldset>
+        <h1 className="header">Kayıt Formu</h1>
         <input
           className="inp-container"
           value={name}

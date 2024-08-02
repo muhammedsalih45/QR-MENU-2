@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn ,faToggleOff} from '@fortawesome/free-solid-svg-icons';
+import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 
 const Table = () => {
   const [rows, setRows] = useState([
@@ -70,28 +70,33 @@ const Table = () => {
     },
   ]);
 
-
-  const handleCheckboxChange = (id) => {
-    setRows((prevRows) =>
-      prevRows.map((row) =>
-        row.id === id ? { ...row, isSelected: !row.isSelected } : row
-      )
+  const handleCheckboxChange = id => {
+    setRows(prevRows =>
+      prevRows.map(row =>
+        row.id === id ? { ...row, isSelected: !row.isSelected } : row,
+      ),
     );
   };
 
-  const handleToggleChange = (id) => {
-    setRows((prevRows) =>
-      prevRows.map((row) =>
-        row.id === id ? { ...row, isToggled: !row.isToggled } : row
-      )
+  const handleToggleChange = id => {
+    setRows(prevRows =>
+      prevRows.map(row =>
+        row.id === id ? { ...row, isToggled: !row.isToggled } : row,
+      ),
     );
   };
   return (
     <table className="table">
-      <thead>
+      <thead className="table-column">
         <tr>
-          <th>
-            <input type="checkbox" />
+          <th style={{ textAlign: 'left' }}>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="check1"
+              name="option1"
+              value="something"
+            />
           </th>
           <th>Order</th>
           <th>Name</th>
@@ -99,16 +104,26 @@ const Table = () => {
           <th>Contact</th>
           <th>Education</th>
           <th>
-            <input type="checkbox" />
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="check1"
+              name="option1"
+              value="something"
+            />{' '}
           </th>
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => (
+        {rows.map(row => (
           <tr key={row.id}>
             <td>
               <input
+                class="form-check-input"
                 type="checkbox"
+                id="check1"
+                name="option1"
+                value="something"
                 checked={row.isSelected}
                 onChange={() => handleCheckboxChange(row.id)}
               />
@@ -119,9 +134,17 @@ const Table = () => {
             <td>{row.contact}</td>
             <td>{row.education}</td>
             <td className="toggle">
-              <FontAwesomeIcon icon={row.isToggled ? faToggleOn : faToggleOff} 
-              style={{ color: 'black',backgroundColor:' rgb(255, 183, 68) ' , padding: '5px', borderRadius: '5px', cursor: 'pointer'}}
-              onClick={() => handleToggleChange(row.id)}/>
+              <FontAwesomeIcon
+                icon={row.isToggled ? faToggleOn : faToggleOff}
+                style={{
+                  color: 'black',
+                  backgroundColor: ' rgb(255, 183, 68) ',
+                  padding: '5px',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                }}
+                onClick={() => handleToggleChange(row.id)}
+              />
             </td>
           </tr>
         ))}

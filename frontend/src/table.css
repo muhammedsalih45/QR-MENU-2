@@ -1,20 +1,57 @@
+body {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 .table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: sans-serif;
-  }
-  
-  .table th,
-  .table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .table th {
-    background-color: #f2f2f2;
-  }
-  
-  .table input[type='checkbox'] {
-    margin-right: 5px;
-  }
+  width: 100%;
+  background-color: white;
+  color: black;
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  border-radius: 30px;
+  overflow: hidden; /* Ensures the border-radius applies to the whole table */
+}
+
+.table thead {
+  border-radius: 30px;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+.table .toggle {
+  text-align: center;
+}
+
+.table .toggle svg {
+  font-size: 1.5em;
+}
+
+.table-checkbox-right {
+  text-align: center !important;
+}
+
+.table-checkbox-left {
+  text-align: left;
+}

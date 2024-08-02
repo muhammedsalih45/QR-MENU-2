@@ -1,7 +1,6 @@
 // src/components/Content.jsx
 import React from 'react';
 import Form from '../components/Form';
-import Foods from '../components/Foods';
 import Table from '../components/Table';
 function Content({ selectedComponent }) {
   if (selectedComponent === 'Form') {
