@@ -6,6 +6,4 @@ const sequelize = new Sequelize('qrmenuapp', 'root', 'Promaster1234.', {
     dialect: 'mysql'
 });
 
-
-
 module.exports = sequelize;
