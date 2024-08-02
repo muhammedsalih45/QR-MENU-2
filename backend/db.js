@@ -1,19 +1,9 @@
-const db = require('mysql2');
 
-const connection = db.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Promaster1234.',
-  database: 'qrmenuapp',
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize('qrmenuapp', 'root', 'Promaster1234.', {
+    host: 'localhost',
+    dialect: 'mysql'
 });
 
-(async () => {
-  try {
-    await connection.connect();
-    console.log('Database connected');
-  } catch (err) {
-    console.log(err);
-  }
-})();
-
-module.exports = connection;
+module.exports = sequelize;

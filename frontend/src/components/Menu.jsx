@@ -1,13 +1,13 @@
 // src/components/Menu.jsx
 import React from 'react';
-
+import '../menu.css';
 function Menu({ setSelectedComponent }) {
   return (
-    <nav>
+    <nav className='menu'>
       <ul>
-        <li onClick={() => setSelectedComponent('Form')}>Form</li>
-        <li onClick={() => setSelectedComponent('Users')}>User</li>
-        <li onClick={() => setSelectedComponent('Settings')}>Settings</li>
+        <li className='side-link' onClick={() => setSelectedComponent('Form')}>Form</li>
+        <li className='side-link' onClick={() => setSelectedComponent('Users')}>User</li>
+        <li className='side-link' onClick={() => setSelectedComponent('Settings')}>Settings</li>
       </ul>
     </nav>
   );
