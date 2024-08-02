@@ -7,23 +7,40 @@ const db = require('./db');
 app.use(cors());
 app.use(express.json());
 
+app.post('/api/products/create', async (req, res) => {
+  const { name, price, description } = req.body;
 
-app.use('/api/users/create', (req, res) => {
-    const { product_name, price, description } = req.body;
-    const sql = 'INSERT INTO products(product_name,price,description) VALUES (?, ?, ?)';
-    db.query(sql, [product_name,price,description], (err, result) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({ error: 'Internal server error' });
-        }
+  try {
+    const lastProduct = await Products.findOne({
+      order: [['id', 'DESC']]
     });
-    return res.status(200).json({ message: 'User created successfully' });
+
+    const newId = lastProduct ? lastProduct.id + 1 : 1;
+
+    const product = await Products.create({
+      id: newId,
+      name: name,
+      price: price,
+      description: description
+    });
+
+    res.json({ success: true, product });
+  } catch (error) {
+    console.error('Error creating product:', error);
+    res.status(500).send('Internal server error');
+  }
 });
 
-app.use('/', (req, res) => {
-    res.send('Hello World!');
-})
-const PORT = process.env.PORT || 5000;
+(async () => {
+  try {
+    await db.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+})();
+
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
