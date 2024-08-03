@@ -1,9 +1,9 @@
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('qrmenuapp', 'root', 'Promaster1234.', {
+const sequelize = new Sequelize('QRMenu', 'postgres', 'Promaster1234.', {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'postgres'
 });
 
 module.exports = sequelize;

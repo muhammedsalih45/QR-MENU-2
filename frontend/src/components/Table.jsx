@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
@@ -70,6 +70,7 @@ const Table = () => {
     },
   ]);
 
+
   const handleCheckboxChange = id => {
     setRows(prevRows =>
       prevRows.map(row =>
@@ -99,11 +100,10 @@ const Table = () => {
               value="something"
             />
           </th>
-          <th>Order</th>
           <th>Name</th>
-          <th>Occupation</th>
-          <th>Contact</th>
-          <th>Education</th>
+          <th>aciklama</th>
+          <th>fiyat</th>
+          <th>kategori id</th>
           <th>Visible</th>
         </tr>
       </thead>
@@ -122,7 +122,6 @@ const Table = () => {
                 disabled={row.isToggled}
               />
             </td>
-            <td>{row.id}</td>
             <td>{row.name}</td>
             <td>{row.occupation}</td>
             <td>{row.contact}</td>

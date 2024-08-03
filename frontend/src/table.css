@@ -11,7 +11,7 @@ body {
   border-spacing: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
-  border-radius: 30px;
+  border-radius: 15px;
   overflow: hidden; /* Ensures the border-radius applies to the whole table */
 }
 
@@ -22,12 +22,12 @@ body {
 .table th,
 .table td {
   padding: 12px 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+  text-align: center;
+  border-bottom: 1px solid #c2c2c2;
 }
 
 .table th {
-  background-color: #f2f2f2;
+  background-color: #e0dede;
   font-weight: bold;
   text-align: center;
 }
@@ -38,14 +38,18 @@ body {
 
 .table input[type='checkbox'] {
   margin-right: 5px;
+  cursor:pointer;
 }
 
 .table .toggle {
   text-align: center;
+
 }
 
 .table .toggle svg {
   font-size: 1.5em;
+  cursor:pointer;
+
 }
 
 .table-checkbox-right {
@@ -57,7 +61,7 @@ body {
 }
 
 .table .faded {
-  color: #999;
+  color: #292222;
   text-decoration: line-through;
   background-color: #f0f0f0;
 }
@@ -68,4 +72,16 @@ body {
   background-color: #939393;
   color: #999;
   cursor: not-allowed;
+}
+
+tr:hover {
+  background-color: #606060;
+}
+
+tr:hover{
+  border: 2px solid #696969;
+  background-color: #bcb8b8;
+  padding: 8px;
+  text-align: left;
+  transition: background-color 0.2s, color 0.3s;
 }
