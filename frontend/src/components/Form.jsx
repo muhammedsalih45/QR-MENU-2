@@ -13,7 +13,7 @@ function Form() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/products/create',
+        'http://localhost:5000/api/admin/dishes/create',
         {
           method: 'POST',
           headers: {

@@ -13,7 +13,7 @@ const Table = () => {
 
   const fetchDishes = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/dishes');
+      const response = await fetch('http://localhost:5000/api/admin/dishes');
       if (!response.ok) {
         throw new Error('Verileri çekmede bir hata oluştu');
       }
