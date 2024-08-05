@@ -11,14 +11,14 @@ body {
   }
   
   .menu-container {
-    width: 20%;
+    width: 18%;
     background-color: #000000;
     padding: 10px;
   }
   
   .content-container {
-    width: 80%;
-    padding: 10px;
+    width: 85%;
+    padding: 40px;
   }
   
   nav ul {
@@ -29,5 +29,9 @@ body {
   ul li {
     margin: 10px 0;
     cursor: pointer;
+  }
+
+  ul li:hover{
+    color: rgb(154, 159, 0);
   }
   

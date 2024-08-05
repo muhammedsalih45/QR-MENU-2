@@ -87,6 +87,19 @@ const Table = () => {
   };
 
   return (
+
+  <div>
+
+  <div className="btn-group" role="group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"b>
+        + Ekle 
+      </button>
+      <ul class="dropdown-menu">
+        <li className='list' onClick={() => setShowProductModal(true)}>Ürün</li>
+        <li className='list' onClick={() => setShowCategoryModal(true)}>Kategori</li>
+      </ul>
+    </div>
+
     <table className="table">
       <thead className="table-column">
         <tr>
@@ -135,7 +148,9 @@ const Table = () => {
         ))}
       </tbody>
     </table>
+  </div>  
   );
+
 };
 
 export default Table;
