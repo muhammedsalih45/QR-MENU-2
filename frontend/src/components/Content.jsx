@@ -1,4 +1,3 @@
-
 // src/components/Content.jsx
 import React from 'react';
 import Form from '../components/Form';
@@ -8,7 +7,7 @@ function Content({ selectedComponent }) {
   if (selectedComponent === 'Form') {
     return <Form />;
   } else if (selectedComponent === 'Foods') {
-    return <Table2/>;
+    return <Table />;
   } else if (selectedComponent === 'Settings') {
     return <div>Settings Content</div>;
   } else {
@@ -17,6 +16,3 @@ function Content({ selectedComponent }) {
 }
 
 export default Content;
-
-
-

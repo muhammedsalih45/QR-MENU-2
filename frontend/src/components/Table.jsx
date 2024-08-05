@@ -87,70 +87,81 @@ const Table = () => {
   };
 
   return (
+    <div>
+      <div className="btn-group" role="group">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          b
+        >
+          + Ekle
+        </button>
+        <ul class="dropdown-menu">
+          <li className="list" onClick={() => setShowProductModal(true)}>
+            Ürün
+          </li>
+          <li className="list" onClick={() => setShowCategoryModal(true)}>
+            Kategori
+          </li>
+        </ul>
+      </div>
 
-  <div>
-
-  <div className="btn-group" role="group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"b>
-        + Ekle 
-      </button>
-      <ul class="dropdown-menu">
-        <li className='list' onClick={() => setShowProductModal(true)}>Ürün</li>
-        <li className='list' onClick={() => setShowCategoryModal(true)}>Kategori</li>
-      </ul>
-    </div>
-
-    <table className="table">
-      <thead className="table-column">
-        <tr>
-          <th style={{ textAlign: 'left' }}>
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id="check1"
-              name="option1"
-              value="something"
-            />
-          </th>
-          <th>İsim</th>
-          <th>aciklama</th>
-          <th>fiyat</th>
-          <th>kategori id</th>
-          <th>Görünürlük</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map(row => (
-          <tr key={row.id} className={row.isToggled ? 'faded disabled' : ''}>
-            <td>
+      <table className="table">
+        <thead className="table-column">
+          <tr>
+            <th style={{ textAlign: 'left' }}>
               <input
                 className="form-check-input"
                 type="checkbox"
                 id="check1"
                 name="option1"
                 value="something"
-                checked={row.isSelected}
-                onChange={() => handleCheckboxChange(row.id)}
-                disabled={row.isToggled}
               />
-            </td>
-            <td>{row.name}</td>
-            <td>{row.occupation}</td>
-            <td>{row.contact}</td>
-            <td>{row.education}</td>
-            <td className="toggle">
-              <FontAwesomeIcon
-                icon={row.isToggled ? faToggleOn : faToggleOff}
-                onClick={() => handleToggleChange(row.id)}
-              />
-            </td>
+            </th>
+            <th>İsim</th>
+            <th>aciklama</th>
+            <th>fiyat</th>
+            <th>kategori id</th>
+            <th>Görünürlük</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>  
+        </thead>
+        <tbody>
+          {rows.map(row => (
+            <tr
+              key={row.id}
+              className={row.isToggled ? 'faded disabled' : ''}
+              id="table-column"
+            >
+              <td>
+                <input
+                  className="form-check-input table-checkbox-left"
+                  type="checkbox"
+                  id="check1"
+                  name="option1"
+                  value="something"
+                  checked={row.isSelected}
+                  onChange={() => handleCheckboxChange(row.id)}
+                  disabled={row.isToggled}
+                />
+              </td>
+              <td>{row.name}</td>
+              <td>{row.occupation}</td>
+              <td>{row.contact}</td>
+              <td>{row.education}</td>
+              <td className="toggle">
+                <FontAwesomeIcon
+                  icon={row.isToggled ? faToggleOn : faToggleOff}
+                  onClick={() => handleToggleChange(row.id)}
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
-
 };
 
 export default Table;
