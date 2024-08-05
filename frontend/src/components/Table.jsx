@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
@@ -70,7 +70,6 @@ const Table = () => {
     },
   ]);
 
-
   const handleCheckboxChange = id => {
     setRows(prevRows =>
       prevRows.map(row =>
@@ -100,11 +99,11 @@ const Table = () => {
               value="something"
             />
           </th>
-          <th>Name</th>
+          <th>İsim</th>
           <th>aciklama</th>
           <th>fiyat</th>
           <th>kategori id</th>
-          <th>Visible</th>
+          <th>Görünürlük</th>
         </tr>
       </thead>
       <tbody>
