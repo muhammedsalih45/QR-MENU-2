@@ -28,7 +28,7 @@ const Dish = sequelize.define('yemekler', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  is_toggled: {
+  is_avaliable: {
     type: DataTypes.BOOLEAN,
     allowNull: true,
     defaultValue: false
@@ -37,6 +37,10 @@ const Dish = sequelize.define('yemekler', {
     type: DataTypes.BOOLEAN,
     allowNull: true,
     defaultValue: false
+  },
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 }, {
   tableName: 'yemekler', // Tablo adınızı burada belirtin

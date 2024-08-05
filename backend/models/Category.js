@@ -9,7 +9,7 @@ const Category = sequelize.define('kategoriler', {
     allowNull: false
   },
   category_name: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(30),
     allowNull: false
   }
 }, {

@@ -37,13 +37,18 @@ exports.getDishById = async (req, res) => {
 }
 // Yeni bir yemek ekleme
 exports.createDish = async (req, res) => {
-    const { name, price, description, category_id } = req.body;
+    const { dish_name, price, description, category_id} = req.body;
+   
     try {
         const dish = await Dishes.create({
-            dish_name: name,
+            dish_name: dish_name,
             price: price,
             description: description,
-            category_id: category_id
+            category_id: category_id,
+            menu_id: 1,
+            is_selected: false,
+            is_avaliable: false,
+            quantity:null
         });
         res.json(dish);
     } catch (error) {
@@ -84,12 +89,12 @@ exports.getCategories = async (req, res) => {
 
 // Kategori ekleme
 exports.createCategory = async (req, res) => {
-    const { category_name } = req.body;
     try {
-        const category = await category.create({
-            category_name: category_name
+        const {name}  = req.body;
+        const Category = await category.create({
+            category_name: name
         });
-        res.json(category);
+        res.json(Category);
     } catch (error) {
         console.log(error);
     }
@@ -98,15 +103,26 @@ exports.createCategory = async (req, res) => {
 exports.getCategoryById = async (req, res) => {
     const id = req.params.id;
     try {
-        const category = await category.findOne({
+        const Category = await category.findOne({
             where: {
                 category_id: id
             }
         });
-        res.json(category);
+        res.json(Category);
     } catch (error) {
         console.log(error);
     }
 }
 
 
+exports.getLastCategory = async (req, res) => {
+    try {
+      const lastCategory = await category.findOne({
+        order: [['category_id', 'DESC']],
+        limit: 1
+      });
+      res.json(lastCategory);
+    } catch (error) {
+      res.status(500).json({ error: 'An error occurred while fetching the last category.' });
+    }
+  };
