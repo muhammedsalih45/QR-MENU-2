@@ -1,37 +1,38 @@
 /* src/App.css */
 body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: ruby-text;
+  background-color: rgb(255, 183, 68);
+  height: 100%;
+}
+
+.content-container {
+  width: 85%;
+  padding: 40px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+ul li:hover {
+  color: rgb(154, 159, 0);
+}
+
+@media (min-height: 768px) {
   .app-container {
     display: flex;
-    background-color: rgb(255, 183, 68);
+    flex-direction: column;
   }
-  
-  .menu-container {
-    width: 18%;
-    background-color: #000000;
-    padding: 10px;
-  }
-  
-  .content-container {
-    width: 85%;
-    padding: 40px;
-  }
-  
-  nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul li {
-    margin: 10px 0;
-    cursor: pointer;
-  }
-
-  ul li:hover{
-    color: rgb(154, 159, 0);
-  }
-  
+}

@@ -1,33 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../menu.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 function Menu({ setSelectedComponent }) {
+  const [menuOpen, setMenuOpen] = useState(false);
 
- 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <nav className="menu">
-      
-      <ul>
-        <div>
-          <li className="side-link" onClick={() => setSelectedComponent('Form')}>
-                  Product
+    <>
+      <div
+        className={`menu-icon ${menuOpen ? 'open' : ''}`}
+        onClick={toggleMenu}
+      >
+        <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+      </div>
+      <nav className={`menu ${menuOpen ? 'open' : ''}`}>
+        <ul>
+          <li
+            className="side-link"
+            onClick={() => setSelectedComponent('Form')}
+          >
+            Product
           </li>
-        </div>
-        <div>
-          <li className="side-link" onClick={() => setSelectedComponent('Foods')}>
-              View
-            </li>
-        </div>
-        <div>
+          <li
+            className="side-link"
+            onClick={() => setSelectedComponent('Foods')}
+          >
+            View
+          </li>
           <li
             className="side-link"
             onClick={() => setSelectedComponent('Settings')}
-            >
+          >
             Settings
           </li>
-        </div>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </>
   );
 }
 
