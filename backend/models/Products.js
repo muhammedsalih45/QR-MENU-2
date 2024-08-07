@@ -1,14 +1,14 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../db');
 const Category = require('./Category');
-const Dish = sequelize.define('yemekler', {
-  dish_id: {
+const Products = sequelize.define('products', {
+  product_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false
   },
-  dish_name: {
+  product_name: {
     type: DataTypes.STRING(30),
     allowNull: false
   },
@@ -17,7 +17,7 @@ const Dish = sequelize.define('yemekler', {
     allowNull: true
   },
   price: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DOUBLE(10, 2),
     allowNull: false
   },
   category_id: {
@@ -26,9 +26,9 @@ const Dish = sequelize.define('yemekler', {
   },
   menu_id: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
   },
-  is_avaliable: {
+  is_available: {
     type: DataTypes.BOOLEAN,
     allowNull: true,
     defaultValue: false
@@ -38,17 +38,18 @@ const Dish = sequelize.define('yemekler', {
     allowNull: true,
     defaultValue: false
   },
-  quantity: {
+  sira_id: {
     type: DataTypes.INTEGER,
-    allowNull: true
+    allowNull: true,
+    defaultValue:0
   }
 }, {
-  tableName: 'yemekler', // Tablo adınızı burada belirtin
+  tableName: 'products', // Tablo adınızı burada belirtin
   timestamps: false ,// createdAt ve updatedAt sütunları yoksa
   freezeTableName: true 
 });
 
-Dish.belongsTo(Category,{foreignKey:'category_id'});
-Category.hasMany(Dish,{foreignKey:'category_id'});
+Products.belongsTo(Category,{foreignKey:'category_id'});
+Category.hasMany(Products,{foreignKey:'category_id'});
 
-module.exports = Dish;
+module.exports = Products;

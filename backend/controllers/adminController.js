@@ -1,77 +1,124 @@
 
-const Dishes = require('../models/DishesModel');
-const category = require('../models/Category');
+const Products = require('../models/Products');
+const Category = require('../models/Category');
 
 // bütün yemekleri getirme
-exports.getAllDishes = async (req, res) => {
+exports.getAllProuducts = async (req, res) => {
     try {
 
-        const dishes = await Dishes.findAll({
+        const products = await Products.findAll({
             include: {
-                model: category
+                model: Category
             }
         });
-        res.json(dishes);
+        res.json(products);
     } catch (error) {
         console.log(error);
     }
 }
+// Ürünleri Sıra id ye göre sıralama
+exports.getAllProductsOrderBySiraId = async (req,res) => {
+    try {
+        const products = await Products.findAll({
+            order:[['sira_id','ASC']]
+        })
+        res.json(products);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({error: 'An error occurred while fetching products.'});
+    }
+}
+
+// exports.deleteAllSiraIdForSort = async (req,res) => {
+
+//     try {
+//         res.json('Sıra idleriniz silindi');
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json('Internal Server Error');
+//     }
+// }
+
+// Ürünleri yeni sıra id ye göre sıralama
+
+
+exports.updateProductsBySiraId = async (req, res) => {
+    const { products } = req.body;
+
+    try {
+        // Her ürün için geçici bir sira_id değeri kullanarak güncelleyin
+        const count = await Products.count();
+        for (let i = 0; i < count; i++) {
+            const product = products[i];
+            await Products.update(
+                { sira_id: i + 1 },
+                { where: { product_id: product.product_id } }
+            );
+        }
+
+        res.status(200).json({ message: 'Products updated successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error.' });
+    }
+};
+
 // ID ' ye göre getirme
-exports.getDishById = async (req, res) => {
+exports.getProductById = async (req, res) => {
 
     const id = req.params.id;
 
     try {
-        const dish = await Dishes.findOne({
+        const product = await Products.findOne({
             where: {
-                dish_id: req.params.id
+                product_id: req.params.id
             },
             include: {
-                model: category
+                model: Category
             }
         });
-        res.json(dish);
+        res.json(product);
     } catch (err) {
         console.log(err);
     }
 }
 // Yeni bir yemek ekleme
-exports.createDish = async (req, res) => {
-    const { dish_name, price, description, category_id} = req.body;
+exports.createProduct = async (req, res) => {
+    const { productName, price, description, category_id} = req.body;
    
     try {
-        const dish = await Dishes.create({
-            dish_name: dish_name,
+        const product= await Products.create({
+            product_name: productName,
             price: price,
             description: description,
             category_id: category_id,
             menu_id: 1,
             is_selected: false,
-            is_avaliable: false,
+            is_available: false,
             quantity:null
         });
-        res.json(dish);
+        res.json(product);
     } catch (error) {
         console.log(error);
     }
 }
 
 // Yemek Düzenleme
-exports.updateDish = async (req, res) => {
-    const { name, price, description, category_id } = req.body;
+exports.updateProduct = async (req, res) => {
+    const { product_name, price, description, category_id } = req.body;
     const id = req.params.id;
     try {
-        const dish = await Dishes.update({
-            dish_name: name,
+        const product = await Products.update({
+            product_name: product_name,
             price: price,
             description: description,
             category_id: category_id
         }, {
             where: {
-                dish_id: id
+                product_id: id
             }
         });
-        res.json(dish);
+        res.json(product);
     } catch (error) {
         console.log(error);
     }   
@@ -80,7 +127,7 @@ exports.updateDish = async (req, res) => {
 // Kategorileri getirme
 exports.getCategories = async (req, res) => {
     try {
-        const categories = await category.findAll();
+        const categories = await Category.findAll();
         res.json(categories);
     } catch (error) {
         console.log(error);
@@ -91,10 +138,10 @@ exports.getCategories = async (req, res) => {
 exports.createCategory = async (req, res) => {
     try {
         const {name}  = req.body;
-        const Category = await category.create({
+        const category = await Category.create({
             category_name: name
         });
-        res.json(Category);
+        res.json(category);
     } catch (error) {
         console.log(error);
     }
@@ -103,12 +150,12 @@ exports.createCategory = async (req, res) => {
 exports.getCategoryById = async (req, res) => {
     const id = req.params.id;
     try {
-        const Category = await category.findOne({
+        const category = await Category.findOne({
             where: {
                 category_id: id
             }
         });
-        res.json(Category);
+        res.json(category);
     } catch (error) {
         console.log(error);
     }
@@ -117,7 +164,7 @@ exports.getCategoryById = async (req, res) => {
 
 exports.getLastCategory = async (req, res) => {
     try {
-      const lastCategory = await category.findOne({
+      const lastCategory = await Category.findOne({
         order: [['category_id', 'DESC']],
         limit: 1
       });

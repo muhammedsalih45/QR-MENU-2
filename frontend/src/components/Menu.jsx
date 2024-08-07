@@ -10,20 +10,24 @@ function Menu({ setSelectedComponent }) {
       <ul>
         <div>
           <li className="side-link" onClick={() => setSelectedComponent('Form')}>
-                  Product
+              Form
           </li>
         </div>
         <div>
           <li className="side-link" onClick={() => setSelectedComponent('Foods')}>
-              View
+              Ürünler
             </li>
         </div>
         <div>
+          <li className="side-link" onClick={() => setSelectedComponent('Sort')}>
+              Sırala
+          </li>
+        </div>
+        <div>
           <li
-            className="side-link"
-            onClick={() => setSelectedComponent('Settings')}
+            className="side-link"onClick={() => setSelectedComponent('Settings')}
             >
-            Settings
+            Ayarlar
           </li>
         </div>
       </ul>
