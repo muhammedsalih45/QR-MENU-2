@@ -109,7 +109,7 @@ const Table = () => {
       </div>
 
       <table className="table">
-        <thead className="table-column">
+        <thead>
           <tr>
             <th style={{ textAlign: 'left' }}>
               <input
