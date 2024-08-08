@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faToggleOn,
-  faToggleOff,
-  faMagnifyingGlass,
-} from '@fortawesome/free-solid-svg-icons';
+import { faToggleOn, faToggleOff, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Table = () => {
   const [rows, setRows] = useState([
@@ -47,7 +43,7 @@ const Table = () => {
     },
   ]);
 
-  const [searchVisible, setSearchVisible] = useState(false); // Search alanı için state ekle
+  const [searchVisible, setSearchVisible] = useState(false);
 
   const handleCheckboxChange = id => {
     setRows(prevRows =>
@@ -66,7 +62,7 @@ const Table = () => {
   };
 
   const toggleSearch = () => {
-    setSearchVisible(!searchVisible); // Search görünürlüğünü değiştir
+    setSearchVisible(!searchVisible);
   };
 
   return (
@@ -84,61 +80,61 @@ const Table = () => {
           <li className="list">Ürün</li>
           <li className="list">Kategori</li>
         </ul>
+      </div>
 
-        <div className="input-group search-button">
-          <button
-            type="button"
-            className="btn btn-outline-secondary"
-            onClick={toggleSearch}
-          >
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-          {searchVisible && (
-            <div className={`search-inputs ${searchVisible ? 'visible' : ''}`}>
-              <input
-                type="text"
-                className="form-control"
-                aria-label="Text input with segmented dropdown button"
-              />
-              <button
-                type="button"
-                className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <span className="visually-hidden">Toggle Dropdown</span>
-                Kategoriler
-              </button>
-              <ul className="dropdown-menu dropdown-menu-end">
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Tatlılar
-                  </a>
-                </li>
+      <div className="search-container">
+        <button
+          type="button"
+          className="btn btn-outline-secondary"
+          onClick={toggleSearch}
+        >
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
+        {searchVisible && (
+          <div className={`search-inputs ${searchVisible ? 'visible' : ''}`}>
+            <input
+              type="text"
+              className="form-control"
+              aria-label="Text input with segmented dropdown button"
+            />
+            <button
+              type="button"
+              className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <span className="visually-hidden">Toggle Dropdown</span>
+              Kategoriler
+            </button>
+            <ul className="dropdown-menu dropdown-menu-end">
+              <li>
+                <a className="dropdown-item" href="#">
+                  Tatlılar
+                </a>
+              </li>
+              <hr className="dropdown-divider" />
+              <li>
+                <a className="dropdown-item" href="#">
+                  Çorbalar
+                </a>
+              </li>
+              <hr className="dropdown-divider" />
+              <li>
+                <a className="dropdown-item" href="#">
+                  Kebaplar
+                </a>
+              </li>
+              <li>
                 <hr className="dropdown-divider" />
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Çorbalar
-                  </a>
-                </li>
-                <hr className="dropdown-divider" />
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Kebaplar
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Sulu Yemekler
-                  </a>
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
+              </li>
+              <li>
+                <a className="dropdown-item" href="#">
+                  Sulu Yemekler
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
 
       <table className="table">
@@ -184,11 +180,10 @@ const Table = () => {
               <td>{row.contact}</td>
               <td>{row.education}</td>
               <td className="toggle">
-                <i class="fa-solid fa-pen-to-square"></i>
-                {/* <FontAwesomeIcon
+                <FontAwesomeIcon
                   icon={row.isToggled ? faToggleOn : faToggleOff}
                   onClick={() => handleToggleChange(row.id)}
-                /> */}
+                />
               </td>
             </tr>
           ))}

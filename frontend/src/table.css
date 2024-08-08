@@ -47,23 +47,26 @@ body {
   display: flex;
   flex-wrap: nowrap;
   gap: 10px;
+  width: 100%; 
 }
-/* @media (max-width: 500px) {
+
+@media (max-width: 500px) {
   .btn-group {
-    flex-direction: column; 
+    flex-direction: column;
+  }
 
   .btn-group .btn {
-    width: 100%; 
+    width: 100%;
     margin-bottom: 10px; 
   }
-} */
+}
 
 .btn-group .search-button {
-  order: 2; /* Arama butonunu ekle butonundan sonra yerleştir */
+  order: 2;
 }
 
 .btn-group .add-button {
-  order: 1; /* Ekle butonunu arama butonundan önce yerleştir */
+  order: 1; 
 }
 
 .table tbody tr:nth-child(even) {
