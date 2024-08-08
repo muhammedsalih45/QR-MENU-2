@@ -14,7 +14,7 @@ function Content({ selectedComponent }) {
   } else if (selectedComponent === 'Settings') {
     return <div>You are in Settings Component</div>;
   }else if (selectedComponent === 'Sort') {
-    return <Sort2 />;
+    return ;
   } else {
     return <div>Select an option from the menu</div>;
   }

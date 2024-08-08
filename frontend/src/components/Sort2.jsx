@@ -8,34 +8,34 @@ const DragAndDropTable = () => {
   const  [contextMenu , setContextMenu] = useState({visible:false,x:0,y:0});
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/admin/productsBySiraid');
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const result = await response.json();
-      setData(result);
-    } catch (error) {
-      console.error('Error fetching data', error);
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-  const handleOnDragEnd = async (result) => {
-    if (!result.destination) return;
+  //   fetchData();
+  // }, []);
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch('http://localhost:5000/api/admin/productsBySiraid');
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     const result = await response.json();
+  //     setData(result);
+  //   } catch (error) {
+  //     console.error('Error fetching data', error);
+  //     setError(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  // const handleOnDragEnd = async (result) => {
+  //   if (!result.destination) return;
 
-    const items = Array.from(data);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+  //   const items = Array.from(data);
+  //   const [reorderedItem] = items.splice(result.source.index, 1);
+  //   items.splice(result.destination.index, 0, reorderedItem);
 
-    setData(items);
-  };
+  //   setData(items);
+  // };
 
   const handleContextMenu = (event)=>{
     event.preventDefault();
@@ -46,27 +46,27 @@ const DragAndDropTable = () => {
     });
   };
 
-  const handleSave = async () => {
+  // const handleSave = async () => {
   
 
-    try {
-      const response = await fetch('http://localhost:5000/api/admin/products/yeniSira', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ products: data}),
-      });
+  //   // try {
+  //   //   const response = await fetch('http://localhost:5000/api/admin/products/yeniSira', {
+  //   //     method: 'PUT',
+  //   //     headers: {
+  //   //       'Content-Type': 'application/json',
+  //   //     },
+  //   //     body: JSON.stringify({ products: data}),
+  //   //   });
 
-      fetchData();
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-    } catch (error) {
-      console.error('Error updating data', error);
-      setError(error.message);
-    }
-  };
+  //   //   fetchData();
+  //   //   if (!response.ok) {
+  //   //     throw new Error('Network response was not ok');
+  //   //   }
+  //   // } catch (error) {
+  //   //   console.error('Error updating data', error);
+  //   //   setError(error.message);
+  //   // }
+  // };
 
   const handleClickOutside = ()=>{
     setContextMenu({visible:false, x:15, y:0});
