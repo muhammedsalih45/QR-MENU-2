@@ -59,7 +59,7 @@ const Table = () => {
       
 
     <div className="btn-group" role="group">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"b>
+      <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"b>
         + Ekle 
       </button>
       <ul class="dropdown-menu">

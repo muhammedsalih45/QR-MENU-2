@@ -2,6 +2,7 @@
 import React from 'react';
 import Form from '../components/Form';
 import Table2 from '../components/Table2';
+import Table from '../components/Table';
 import Sort2 from '../components/Sort2';
 
 function Content({ selectedComponent }) {
