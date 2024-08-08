@@ -1,26 +1,23 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../db');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db'); // sequelize instance'ınızı buraya ekleyin
 
-const Category = sequelize.define('categories', {
+const Category = sequelize.define('Category', {
   category_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    allowNull: false
   },
   category_name: {
     type: DataTypes.STRING(30),
-    allowNull: false
+    allowNull: false,
   },
   sira_id: {
     type: DataTypes.INTEGER,
-    allowNull: true,
-    defaultValue: 0
-  }
+    allowNull: false,
+  },
 }, {
   tableName: 'categories',
   timestamps: false,
-  freezeTableName: true
 });
 
 module.exports = Category;

@@ -11,11 +11,14 @@ router.post('/products/create', adminController.createProduct);
 
 router.get('/products/:id', adminController.getProductById);
 
-router.put('/products/:id',adminController.updateProduct);
+router.put('/products/update',adminController.updateProduct);
 
 router.get('/productsBySiraid', adminController.getAllProductsOrderBySiraId);
 
+router.get('/productsFilter', adminController.filterProductsByName);
+
 router.get('/products', adminController.getAllProuducts);
+
 
 
 

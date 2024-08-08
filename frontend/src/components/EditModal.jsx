@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect,useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CategoryModal from './NewCategoryModal';
-import '../productModal.css'
-const ProductModal = ({ show, handleClose, handleSave }) => {
-  const [productName, setProductName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [category_id, setCategoryId] = useState('');
+import { ProductContext } from './Table2';
+// import '../productModal.css'
+const EditModal = ({ show, handleClose }) => {
   const [categories, setCategories] = useState([]);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
-  
+  const [newName, setNewName] = useState('');  
+  const [newPrice, setNewPrice] = useState('');
+  const [newCategory_id, setNewCategory_id] = useState('');
+  const [newDescription, setNewDescription] = useState('');
+  const Product = useContext(ProductContext);
+  if (!show || !Product) return null;
+
 
   useEffect(() => {
     fetchCategories();
   }, []);
-
   const fetchCategories = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/admin/categories');
@@ -28,37 +31,35 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
       console.error('Kategoriler alınamadı', error);
     }
   };
-
+  // Burası Modalın yapacağı işi temsil eden fonksiyon her modal için handleSubmit modalı 
   const handleSubmit = async (e) => {
-    // Yeni ürünü veri tabanına ekle
     e.preventDefault();
+
     try {
-      const response = await fetch(
-        'http://localhost:5000/api/admin/products/create',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ productName, price, description, category_id }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      // Yeni ürün eklendikten sonra formu temizleyin
-      setProductName('');
-      setDescription('');
-      setPrice('');
-      setCategoryId('');
-      handleSave();
+        const response = await fetch('http://localhost:5000/api/admin/products/update', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id: Product.product_id,
+                newName: newName,
+                newPrice: newPrice,
+                newCategory_id: newCategory_id,
+                newDescription: newDescription
+            }),
+        });
+        if (!response.ok) {
+            throw new Error('Veritabanı hatası');
+        }   
+        setError('');
+        handleSave();
+        handleModalClose(false);
     } catch (error) {
-      console.error('Error adding product:', error);
+        console.error('Error updating username:', error);
+        setError('Error updating username');
     }
   };
-
   const fetchLastCategory = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/admin/categories/last');
@@ -71,7 +72,6 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
       console.error('Kategoriler alınamadı', error);
     }
   }
-
   const handleSaveforPlus = async () => {
   // Yeni kategori eklendikten sonra kategorileri yeniden fetch et
  
@@ -81,22 +81,15 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
     setShowCategoryModal(false);
   
   };
-
   const handleModalClose = () => {
-    setProductName('');
-    setDescription('');
-    setPrice('');
-    setCategoryId('');
     handleClose();
   };
-
-
   return (
     <div className={`modal ${show ? 'show' : ''}`} style={{ display: show ? 'block' : 'none' }} tabIndex="-1">
       <div className="modal-dialog">
         <div className="modal-content" >
           <div className="modal-header">
-            <h5 className="modal-title">Yeni Ürün Ekle</h5>
+            <h5 className="modal-title">Değiştir</h5>
             <button type="button" className="btn-close" onClick={handleModalClose} ></button>
           </div>
           <div className="modal-body">
@@ -107,8 +100,8 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
                   type="text"
                   className="form-control"
                   id="productName"
-                  value={productName}
-                  onChange={(e) => setProductName(e.target.value)}
+                  value={Product.product_name}
+                  onChange={(e) => setNewName(e.target.value)}
                   required
                 />
               </div>
@@ -118,8 +111,8 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
                   type="text"
                   className="form-control"
                   id="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={Product.description}
+                  onChange={(e) => setNewDescription(e.target.value)}
                   required
                 />
               </div>
@@ -129,8 +122,8 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
                   type="number"
                   className="form-control"
                   id="price"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
+                  value={Product.price}
+                  onChange={(e) => setNewPrice(e.target.value)}
                   required
                 />
               </div>
@@ -140,8 +133,8 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
                   <select
                     className="form-control category-selector"
                     id="category"
-                    value={category_id}
-                    onChange={(e) => setCategoryId(e.target.value)}
+                    value={Product.category_id}
+                    onChange={(e) => setNewCategory_id(e.target.value)}
                     required
                     style={{ flex: 1 }}
                   >
@@ -181,4 +174,12 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
   );
 };
 
-export default ProductModal;
+export default EditModal;
+
+
+
+
+
+
+
+

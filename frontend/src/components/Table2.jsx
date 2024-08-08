@@ -1,17 +1,27 @@
 // src/components/Table.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,createContext } from 'react';
 import '../table2.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn, faToggleOff ,faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import ProductModal from './NewProductModal';
 import CategoryModal from './NewCategoryModal';
+import EditModal from './EditModal';
 
+export const ProductContext = createContext();
 
 const Table = () => {
   const [rows, setRows] = useState([]);
+  const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
   const [showProductModal, setShowProductModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const handleSearch = () => {
+    // Arama işlemleri
+    
+  };
+  
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -52,17 +62,19 @@ const Table = () => {
     setShowCategoryModal(false);
   };
 
-  // const toggleSearch = () => {
-  //   setSearchVisible(!searchVisible); // Search görünürlüğünü değiştir
-  // };
-
-  const handleSearch = () => {
-    // Arama işlemleri
+  const handleEditClick = (row) => {
+    setProduct(row)
+    setShowEditModal(true);
   };
 
+
+ 
+
+
   return (
+    <ProductContext.Provider value={product}>
+
     <div>
-      
 
     <div className="btn-group" role="group">
       <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"b>
@@ -130,9 +142,12 @@ const Table = () => {
               <td>{row.product_name}</td>
               <td>{row.description}</td>
               <td>{row.price}</td>
-              <td>{row.category ? row.category.category_name : 'Kategori Yok'}</td>
-              <td className="toggle">
-                <i class="fa-solid fa-pen-to-square"></i>
+              <td>{row.Category ? row.Category.category_name : 'Kategori Yok'}</td>
+              <td className="edit">
+                <i class="fa-solid fa-pen-to-square"
+                 onClick={() => handleEditClick(row)}></i>
+
+
                 {/* <FontAwesomeIcon
                   icon={row.isToggled ? faToggleOn : faToggleOff}
                   onClick={() => handleToggleChange(row.id)}
@@ -142,8 +157,13 @@ const Table = () => {
           ))}
         </tbody>
       </table>
+      {showEditModal && <EditModal show={showEditModal} handleClose={() => setShowEditModal(false)} />}
+
     </div>
+    </ProductContext.Provider>
+
   );
 };
 
 export default Table;
+

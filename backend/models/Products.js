@@ -1,55 +1,53 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../db');
-const Category = require('./Category');
-const Products = sequelize.define('products', {
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db'); // sequelize instance'ınızı buraya ekleyin
+const Category  = require('./Category');
+const Product = sequelize.define('Product', {
   product_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-    allowNull: false
   },
   product_name: {
     type: DataTypes.STRING(30),
-    allowNull: false
-  },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: true
+    allowNull: false,
   },
   price: {
-    type: DataTypes.DOUBLE(10, 2),
-    allowNull: false
+    type: DataTypes.DOUBLE,
+    allowNull: false,
   },
   category_id: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references: {
+      model: 'categories',
+      key: 'category_id',
+    },
   },
   menu_id: {
     type: DataTypes.INTEGER,
-    allowNull: true
-  },
-  is_available: {
-    type: DataTypes.BOOLEAN,
     allowNull: true,
-    defaultValue: false
   },
   is_selected: {
     type: DataTypes.BOOLEAN,
-    allowNull: true,
-    defaultValue: false
+    defaultValue: false,
+  },
+  is_available: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
   sira_id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.TEXT,
     allowNull: true,
-    defaultValue:0
-  }
+  },
 }, {
-  tableName: 'products', // Tablo adınızı burada belirtin
-  timestamps: false ,// createdAt ve updatedAt sütunları yoksa
-  freezeTableName: true 
+  tableName: 'products',
+  timestamps: false,
 });
+Category.hasMany(Product, { foreignKey: 'category_id' });
+Product.belongsTo(Category, { foreignKey: 'category_id' });
 
-Products.belongsTo(Category,{foreignKey:'category_id'});
-Category.hasMany(Products,{foreignKey:'category_id'});
-
-module.exports = Products;
+module.exports = Product;

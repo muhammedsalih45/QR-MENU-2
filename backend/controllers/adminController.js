@@ -1,7 +1,7 @@
 
 const Products = require('../models/Products');
 const Category = require('../models/Category');
-
+const { Op } = require("sequelize");
 // bütün yemekleri getirme
 exports.getAllProuducts = async (req, res) => {
     try {
@@ -28,6 +28,24 @@ exports.getAllProductsOrderBySiraId = async (req,res) => {
         res.status(500).json({error: 'An error occurred while fetching products.'});
     }
 }
+
+exports.filterProductsByName = async (req, res) => {
+    const { name } = req.query;
+    try {
+        const products = await Products.findAll({
+            where: {
+                product_name: {
+                    [Op.like]: `%${name}%`
+                }
+            }
+        });
+        res.json(products);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json("Internal Server Error");
+    }
+}
+
 
 // exports.deleteAllSiraIdForSort = async (req,res) => {
 
@@ -85,7 +103,7 @@ exports.getProductById = async (req, res) => {
 // Yeni bir yemek ekleme
 exports.createProduct = async (req, res) => {
     const { productName, price, description, category_id} = req.body;
-   
+    const count = await Products.count();
     try {
         const product= await Products.create({
             product_name: productName,
@@ -95,7 +113,7 @@ exports.createProduct = async (req, res) => {
             menu_id: 1,
             is_selected: false,
             is_available: false,
-            quantity:null
+            sira_id:count+1
         });
         res.json(product);
     } catch (error) {
@@ -105,14 +123,13 @@ exports.createProduct = async (req, res) => {
 
 // Yemek Düzenleme
 exports.updateProduct = async (req, res) => {
-    const { product_name, price, description, category_id } = req.body;
-    const id = req.params.id;
+    const { newName, newPrice, newDescription, newCategory_id ,id} = req.body;
     try {
         const product = await Products.update({
-            product_name: product_name,
-            price: price,
-            description: description,
-            category_id: category_id
+            product_name: newName,
+            price: newPrice,
+            description: newDescription,
+            category_id: newCategory_id
         }, {
             where: {
                 product_id: id
