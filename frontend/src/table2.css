@@ -1,4 +1,4 @@
-body {
+/* body {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
@@ -93,39 +93,34 @@ tr:hover {
   background-color: #bcb8b8;
   transition: background-color 0.2s, color 0.3s;
 }
+ */
 
-@keyframes slideInDown {
-  from {
-    transform: translateY(-50%);
-    opacity: 2;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 5;
-  }
-}
-
-.modal.show .modal-dialog {
-  animation: slideInDown 0.1s ease-out;
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+ /* App.css veya ilgili stil dosyanız */
+.table {
   width: 100%;
-  height: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+.draggable-row {
+  background-color: rgb(167, 160, 160);
+}
+
+.draggable-row.dragging {
+  background-color: #e9e9e9 !important;
   display: flex;
   align-items: center;
-  border-color: #140b0b;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  cursor: grabbing;
+  border-radius: 10px;
 }
 
-.modal-dialog {
-  max-width: 500px;
-}
-
-.modal-content {
-  padding: 20px;
-}

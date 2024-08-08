@@ -7,7 +7,21 @@
     block-size: 35px;
     
 }
+.modal-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30%;
+}
 
+.form-control{
+    border-color: black;
+    border-radius: 10px;
+}
+
+/* .form-control{
+    border-radius: 10px;
+    border: 20px;
+} */
 .plus-icon{
     align-items: center;
     justify-content: center;

@@ -4,7 +4,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CategoryModal from './NewCategoryModal';
 import '../productModal.css'
 const ProductModal = ({ show, handleClose, handleSave }) => {
-  const [dish_name, setDishName] = useState('');
+  const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [category_id, setCategoryId] = useState('');
@@ -33,13 +33,13 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        'http://localhost:5000/api/admin/dishes/create',
+        'http://localhost:5000/api/admin/products/create',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ dish_name, price, description, category_id }),
+          body: JSON.stringify({ productName, price, description, category_id }),
         }
       );
 
@@ -48,7 +48,7 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
       }
 
       // Yeni ürün eklendikten sonra formu temizleyin
-      setDishName('');
+      setProductName('');
       setDescription('');
       setPrice('');
       setCategoryId('');
@@ -82,7 +82,7 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
   };
 
   const handleModalClose = () => {
-    setDishName('');
+    setProductName('');
     setDescription('');
     setPrice('');
     setCategoryId('');
@@ -101,13 +101,13 @@ const ProductModal = ({ show, handleClose, handleSave }) => {
           <div className="modal-body">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label htmlFor="dishName" className="form-label">Yemek Adı</label>
+                <label htmlFor="productName" className="form-label">Ürün Adı</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="dishName"
-                  value={dish_name}
-                  onChange={(e) => setDishName(e.target.value)}
+                  id="productName"
+                  value={productName}
+                  onChange={(e) => setProductName(e.target.value)}
                   required
                 />
               </div>

@@ -13,12 +13,12 @@ const Table = () => {
   const [showProductModal, setShowProductModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   useEffect(() => {
-    fetchDishes();
+    fetchProducts();
   }, []);
 
-  const fetchDishes = async () => {
+  const fetchProducts = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/dishes');
+      const response = await fetch('http://localhost:5000/api/admin/products');
       if (!response.ok) {
         throw new Error('Verileri çekmede bir hata oluştu');
       }
@@ -33,7 +33,7 @@ const Table = () => {
   const handleCheckboxChange = (id) => {
     setRows(prevRows =>
       prevRows.map(row =>
-        row.dish_id === id ? { ...row, is_selected: !row.is_selected } : row,
+        row.product_id === id ? { ...row, is_selected: !row.is_selected } : row,
       ),
     );
   };
@@ -41,13 +41,13 @@ const Table = () => {
   const handleToggleChange = (id) => {
     setRows(prevRows =>
       prevRows.map(row =>
-        row.dish_id === id ? { ...row, is_toggled: !row.is_toggled } : row,
+        row.product_id === id ? { ...row, is_available: !row.is_available } : row,
       ),
     );
   };
 
   const handleSave = () => {
-    fetchDishes();
+    fetchProducts();
     setShowProductModal(false);
     setShowCategoryModal(false);
   };
@@ -85,7 +85,7 @@ const Table = () => {
                 value="something"
               />
             </th>
-            <th>Dish Name</th>
+            <th>Name</th>
             <th>Description</th>
             <th>Price</th>
             <th>Category</th>
@@ -94,7 +94,8 @@ const Table = () => {
         </thead>
         <tbody>
           {rows.map(row => (
-            <tr key={row.dish_id} className={row.is_toggled ? 'faded disabled' : ''}>
+            //  TABLODAKİ SATIRIN ÜZERİNİ ÇİZEN AŞAĞIDAKİ KOD SATIRI
+            <tr key={row.product_id} className={row.is_available ? 'faded disabled' : ''}> 
               <td>
                 <input
                   className="form-check-input"
@@ -103,18 +104,19 @@ const Table = () => {
                   name="option1"
                   value="something"
                   checked={row.is_selected}
-                  onChange={() => handleCheckboxChange(row.dish_id)}
-                  disabled={row.is_toggled}
+                  onChange={() => handleCheckboxChange(row.product_id)}
+                  disabled={row.is_available}
                 />
               </td>
-              <td>{row.dish_name}</td>
+              <td>{row.product_name}</td>
               <td>{row.description}</td>
               <td>{row.price}</td>
-              <td>{row.kategoriler ? row.kategoriler.category_name : 'Kategori Yok'}</td>
+              <td>{row.category ? row.category.category_name : 'Kategori Yok'}</td>
               <td className="toggle">
+
                 <FontAwesomeIcon
-                  icon={row.is_toggled ? faToggleOn : faToggleOff}
-                  onClick={() => handleToggleChange(row.dish_id)}
+                  icon={row.is_available ? faToggleOn : faToggleOff}
+                  onClick={() => handleToggleChange(row.product_id)}
                 />
               </td>
             </tr>

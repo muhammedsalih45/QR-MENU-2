@@ -3,29 +3,31 @@ const router = express.Router();
 const adminController = require('../controllers/adminController');
 
 
-router.post('/dishes/create', adminController.createDish);
-// id ye göre yemek getirme
-router.get('/dishes/:id', adminController.getDishById);
+// router.put('/products/deleteSiraId',adminController.deleteAllSiraIdForSort);
 
-// id ye göre yemek güncelleme
-router.put('/dishes/:id',adminController.updateDish);
+router.put('/products/yeniSira',adminController.updateProductsBySiraId);
 
-// bütün yemekleri getirme
-router.get('/dishes', adminController.getAllDishes);
+router.post('/products/create', adminController.createProduct);
 
-// yemek ekleme
+router.get('/products/:id', adminController.getProductById);
 
-// kategori ekleme
+router.put('/products/:id',adminController.updateProduct);
+
+router.get('/productsBySiraid', adminController.getAllProductsOrderBySiraId);
+
+router.get('/products', adminController.getAllProuducts);
+
+
+
 router.post('/categories/create', adminController.createCategory);
 
-// Son eklenen Kategoriyi getir
 router.get('/categories/last',adminController.getLastCategory);
 
-// kategorileri getir 
 router.get('/categories/:id', adminController.getCategoryById);
 
 router.get('/categories', adminController.getCategories);
-// id ye göre kategori getirme
+
+
 
 
 module.exports = router;
