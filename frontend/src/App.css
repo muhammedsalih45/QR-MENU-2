@@ -9,6 +9,7 @@ body {
   display: ruby-text;
   background-color: rgb(255, 183, 68);
   height: 100%;
+  width: 100%;
 }
 
 .content-container {
@@ -30,9 +31,14 @@ ul li:hover {
   color: rgb(154, 159, 0);
 }
 
-@media (min-height: 768px) {
+@media (min-width: 308px) {
   .app-container {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .app-container {
+    width: 100%;
   }
 }

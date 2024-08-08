@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
+import {
+  faToggleOn,
+  faToggleOff,
+  faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Table = () => {
   const [rows, setRows] = useState([
@@ -41,34 +45,9 @@ const Table = () => {
       isSelected: false,
       isToggled: false,
     },
-    {
-      id: 4616,
-      name: 'Matthew Wasil',
-      occupation: 'Graphic Designer',
-      contact: '+02 020 3994 929',
-      education: 'London College',
-      isSelected: false,
-      isToggled: false,
-    },
-    {
-      id: 9841,
-      name: 'Sampson Murphy',
-      occupation: 'Mobile Dev',
-      contact: '+01 352 1125 0192',
-      education: 'Senior High',
-      isSelected: false,
-      isToggled: false,
-    },
-    {
-      id: 9548,
-      name: 'Gaspar Semenov',
-      occupation: 'Illustrator',
-      contact: '+92 020 3994 929',
-      education: 'College',
-      isSelected: false,
-      isToggled: false,
-    },
   ]);
+
+  const [searchVisible, setSearchVisible] = useState(false); // Search alanı için state ekle
 
   const handleCheckboxChange = id => {
     setRows(prevRows =>
@@ -86,26 +65,80 @@ const Table = () => {
     );
   };
 
+  const toggleSearch = () => {
+    setSearchVisible(!searchVisible); // Search görünürlüğünü değiştir
+  };
+
   return (
     <div>
       <div className="btn-group" role="group">
         <button
           type="button"
-          class="btn btn-primary dropdown-toggle"
+          className="btn btn-primary dropdown-toggle add-button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          b
         >
           + Ekle
         </button>
-        <ul class="dropdown-menu">
-          <li className="list" onClick={() => setShowProductModal(true)}>
-            Ürün
-          </li>
-          <li className="list" onClick={() => setShowCategoryModal(true)}>
-            Kategori
-          </li>
+        <ul className="dropdown-menu">
+          <li className="list">Ürün</li>
+          <li className="list">Kategori</li>
         </ul>
+
+        <div className="input-group search-button">
+          <button
+            type="button"
+            className="btn btn-outline-secondary"
+            onClick={toggleSearch}
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+          {searchVisible && (
+            <div className={`search-inputs ${searchVisible ? 'visible' : ''}`}>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Text input with segmented dropdown button"
+              />
+              <button
+                type="button"
+                className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span className="visually-hidden">Toggle Dropdown</span>
+                Kategoriler
+              </button>
+              <ul className="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Tatlılar
+                  </a>
+                </li>
+                <hr className="dropdown-divider" />
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Çorbalar
+                  </a>
+                </li>
+                <hr className="dropdown-divider" />
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Kebaplar
+                  </a>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Sulu Yemekler
+                  </a>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
 
       <table className="table">
@@ -121,9 +154,9 @@ const Table = () => {
               />
             </th>
             <th>İsim</th>
-            <th>aciklama</th>
-            <th>fiyat</th>
-            <th>kategori id</th>
+            <th>Aciklama</th>
+            <th>Fiyat</th>
+            <th>Kategori ID</th>
             <th>Görünürlük</th>
           </tr>
         </thead>
@@ -151,10 +184,11 @@ const Table = () => {
               <td>{row.contact}</td>
               <td>{row.education}</td>
               <td className="toggle">
-                <FontAwesomeIcon
+                <i class="fa-solid fa-pen-to-square"></i>
+                {/* <FontAwesomeIcon
                   icon={row.isToggled ? faToggleOn : faToggleOff}
                   onClick={() => handleToggleChange(row.id)}
-                />
+                /> */}
               </td>
             </tr>
           ))}
