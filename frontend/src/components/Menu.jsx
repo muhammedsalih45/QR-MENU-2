@@ -11,31 +11,6 @@ function Menu({ setSelectedComponent }) {
   };
 
   return (
-<<<<<<< HEAD
-    <nav className="menu">
-      
-      <ul>
-        <div>
-          <li className="side-link" onClick={() => setSelectedComponent('Form')}>
-              Form
-          </li>
-        </div>
-        <div>
-          <li className="side-link" onClick={() => setSelectedComponent('Foods')}>
-              Ürünler
-            </li>
-        </div>
-        <div>
-          <li className="side-link" onClick={() => setSelectedComponent('Sort')}>
-              Sırala
-          </li>
-        </div>
-        <div>
-          <li
-            className="side-link"onClick={() => setSelectedComponent('Settings')}
-            >
-            Ayarlar
-=======
     <>
       <div
         className={`menu-icon ${menuOpen ? 'open' : ''}`}
@@ -59,10 +34,16 @@ function Menu({ setSelectedComponent }) {
           </li>
           <li
             className="side-link"
+            onClick={() => setSelectedComponent('Sort')}
+          >
+            Sort
+          </li>
+          <li
+            className="side-link"
             onClick={() => setSelectedComponent('Settings')}
           >
             Settings
->>>>>>> 316014a51fe0d2d5cf846b7855dd4cb9881831ae
+
           </li>
         </ul>
       </nav>

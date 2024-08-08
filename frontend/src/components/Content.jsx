@@ -1,9 +1,7 @@
 // src/components/Content.jsx
 import React from 'react';
 import Form from '../components/Form';
-import Table from '../components/Table';
 import Table2 from '../components/Table2';
-import Sort from '../components/Sort';
 import Sort2 from '../components/Sort2';
 
 function Content({ selectedComponent }) {
