@@ -62,6 +62,15 @@ function Menu({ setSelectedComponent }) {
           </li>
           <li
             className="side-link"
+            onClick={() =>{
+              setSelectedComponent('Sort');
+              setMenuOpen(false);
+            }}
+          >
+            Sort
+          </li>
+          <li
+            className="side-link"
             onClick={() => {
               setSelectedComponent('Settings');
               setMenuOpen(false);

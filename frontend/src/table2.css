@@ -124,3 +124,19 @@ tr:hover {
   border-radius: 10px;
 }
 
+.btn.btn-primary.dropdown-toggle{
+  width: 30%;
+  margin-right: 80%;
+  height: 40px;
+  
+}
+
+.dropdown-menu{
+  background-color: #ababab;
+}
+.list{
+  color: #000000;
+}
+
+.list:hover{
+  background-color: #c2c2c24d !important;}
