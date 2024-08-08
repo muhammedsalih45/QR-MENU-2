@@ -10,10 +10,10 @@ body {
   border-collapse: collapse;
   border-spacing: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
+  overflow: hidden; /* overflow-y: auto kaldırıldı, tablo yatay kaydırma için */
   border-radius: 15px;
-  overflow: hidden;
 }
+
 .table thead {
   border-radius: 30px;
 }
@@ -32,15 +32,39 @@ body {
 
 .table th,
 .table td {
-  padding: 12px 15px;
-  text-align: center;
-  border-bottom: 1px solid #c2c2c2;
+  padding: 10px;
 }
 
 .table th {
-  background-color: #e0dede;
-  font-weight: bold;
-  text-align: center;
+  font-size: 16px;
+}
+
+.search-inputs {
+  flex-direction: row;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+@media (max-width: 500px) {
+  .btn-group {
+    flex-direction: column; /* Ekran küçükse butonları dikey düzenle */
+  }
+
+  .btn-group .btn {
+    width: 100%; /* Butonların tam genişlikte olmasını sağla */
+    margin-bottom: 10px; /* Butonlar arasına dikey boşluk ekle */
+  }
+}
+
+.btn-group .search-button {
+  order: 2; /* Arama butonunu ekle butonundan sonra yerleştir */
+}
+
+.btn-group .add-button {
+  order: 1; /* Ekle butonunu arama butonundan önce yerleştir */
 }
 
 .table tbody tr:nth-child(even) {
@@ -97,12 +121,21 @@ tr:hover {
 @keyframes slideInDown {
   from {
     transform: translateY(-50%);
-    opacity: 2;
+    opacity: 0;
   }
   to {
     transform: translateY(0);
-    opacity: 5;
+    opacity: 1;
   }
+}
+
+.search-inputs {
+  display: none;
+}
+
+.search-inputs.visible {
+  display: flex;
+  animation: slideInDown 0.5s ease;
 }
 
 .modal.show .modal-dialog {
@@ -128,4 +161,20 @@ tr:hover {
 
 .modal-content {
   padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .table {
+    font-size: 14px; /* Yazı boyutunu küçült */
+    overflow-y: scroll; /* Tabloyu yatay kaydırılabilir yap */
+    display: block; /* Tabloyu blok eleman olarak göster */
+    white-space: nowrap; /* Satırları sarmayı önle */
+  }
+}
+
+@media (max-width: 480px) {
+  .table th,
+  .table td {
+    font-size: 12px; /* Daha küçük yazı boyutu */
+  }
 }
