@@ -47,7 +47,6 @@ body {
   display: flex;
   flex-wrap: nowrap;
   gap: 10px;
-  width: 
 }
 @media (max-width: 500px) {
   .btn-group {
@@ -178,4 +177,10 @@ tr:hover {
   .table td {
     font-size: 12px; 
   }
+}
+
+.btn.btn-primary.dropdown-toggle {
+  width: 80%;
+  margin-right: 80%;
+  height: 40px;
 }
