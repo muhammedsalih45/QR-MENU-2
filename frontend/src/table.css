@@ -48,16 +48,15 @@ body {
   flex-wrap: nowrap;
   gap: 10px;
 }
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .btn-group {
-    flex-direction: column; /* Ekran küçükse butonları dikey düzenle */
-  }
+    flex-direction: column; 
 
   .btn-group .btn {
-    width: 100%; /* Butonların tam genişlikte olmasını sağla */
-    margin-bottom: 10px; /* Butonlar arasına dikey boşluk ekle */
+    width: 100%; 
+    margin-bottom: 10px; 
   }
-}
+} */
 
 .btn-group .search-button {
   order: 2; /* Arama butonunu ekle butonundan sonra yerleştir */
@@ -118,7 +117,7 @@ tr:hover {
   transition: background-color 0.2s, color 0.3s;
 }
 
-@keyframes slideInDown {
+/* @keyframes slideInDown {
   from {
     transform: translateY(-50%);
     opacity: 0;
@@ -127,7 +126,7 @@ tr:hover {
     transform: translateY(0);
     opacity: 1;
   }
-}
+} */
 
 .search-inputs {
   display: none;
@@ -163,18 +162,18 @@ tr:hover {
   padding: 20px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .table {
-    font-size: 14px; /* Yazı boyutunu küçült */
-    overflow-y: scroll; /* Tabloyu yatay kaydırılabilir yap */
-    display: block; /* Tabloyu blok eleman olarak göster */
-    white-space: nowrap; /* Satırları sarmayı önle */
+    font-size: 14px; 
+    overflow-y: scroll; 
+    display: block; 
+    white-space: nowrap; 
   }
 }
 
 @media (max-width: 480px) {
   .table th,
   .table td {
-    font-size: 12px; /* Daha küçük yazı boyutu */
+    font-size: 12px;
   }
-}
+} */

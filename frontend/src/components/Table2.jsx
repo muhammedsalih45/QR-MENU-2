@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import '../table2.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
+import { faToggleOn, faToggleOff ,faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import ProductModal from './NewProductModal';
 import CategoryModal from './NewCategoryModal';
 
@@ -52,7 +52,13 @@ const Table = () => {
     setShowCategoryModal(false);
   };
 
+  // const toggleSearch = () => {
+  //   setSearchVisible(!searchVisible); // Search görünürlüğünü değiştir
+  // };
 
+  const handleSearch = () => {
+    // Arama işlemleri
+  };
 
   return (
     <div>
@@ -66,6 +72,19 @@ const Table = () => {
         <li className='list' onClick={() => setShowProductModal(true)}>Ürün</li>
         <li className='list' onClick={() => setShowCategoryModal(true)}>Kategori</li>
       </ul>
+      <input
+          type="text"
+          className="search-input"
+          aria-label="Text input with segmented dropdown button"
+          />
+       <button
+            type="button"
+            className="btn btn-outline-secondary"
+            onClick={handleSearch}
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
+
     </div>
 
 
@@ -89,7 +108,7 @@ const Table = () => {
             <th>Description</th>
             <th>Price</th>
             <th>Category</th>
-            <th>Visible</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -113,11 +132,11 @@ const Table = () => {
               <td>{row.price}</td>
               <td>{row.category ? row.category.category_name : 'Kategori Yok'}</td>
               <td className="toggle">
-
-                <FontAwesomeIcon
-                  icon={row.is_available ? faToggleOn : faToggleOff}
-                  onClick={() => handleToggleChange(row.product_id)}
-                />
+                <i class="fa-solid fa-pen-to-square"></i>
+                {/* <FontAwesomeIcon
+                  icon={row.isToggled ? faToggleOn : faToggleOff}
+                  onClick={() => handleToggleChange(row.id)}
+                /> */}
               </td>
             </tr>
           ))}
