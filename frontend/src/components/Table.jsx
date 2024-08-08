@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faToggleOn, faToggleOff, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {
+  faToggleOn,
+  faToggleOff,
+  faMagnifyingGlass,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Table = () => {
   const [rows, setRows] = useState([
@@ -43,8 +47,6 @@ const Table = () => {
     },
   ]);
 
-  const [searchVisible, setSearchVisible] = useState(false);
-
   const handleCheckboxChange = id => {
     setRows(prevRows =>
       prevRows.map(row =>
@@ -61,12 +63,8 @@ const Table = () => {
     );
   };
 
-  const toggleSearch = () => {
-    setSearchVisible(!searchVisible);
-  };
-
   return (
-    <div>
+    <div className="table-container">
       <div className="btn-group" role="group">
         <button
           type="button"
@@ -83,61 +81,49 @@ const Table = () => {
       </div>
 
       <div className="search-container">
+        <input
+          type="text"
+          className="form-control search-input"
+          aria-label="Text input with segmented dropdown button"
+        />
         <button
           type="button"
-          className="btn btn-outline-secondary"
-          onClick={toggleSearch}
+          className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
         >
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
+          Kategoriler
         </button>
-        {searchVisible && (
-          <div className={`search-inputs ${searchVisible ? 'visible' : ''}`}>
-            <input
-              type="text"
-              className="form-control"
-              aria-label="Text input with segmented dropdown button"
-            />
-            <button
-              type="button"
-              className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <span className="visually-hidden">Toggle Dropdown</span>
-              Kategoriler
-            </button>
-            <ul className="dropdown-menu dropdown-menu-end">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Tatlılar
-                </a>
-              </li>
-              <hr className="dropdown-divider" />
-              <li>
-                <a className="dropdown-item" href="#">
-                  Çorbalar
-                </a>
-              </li>
-              <hr className="dropdown-divider" />
-              <li>
-                <a className="dropdown-item" href="#">
-                  Kebaplar
-                </a>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Sulu Yemekler
-                </a>
-              </li>
-            </ul>
-          </div>
-        )}
+        <ul className="dropdown-menu dropdown-menu-end">
+          <li>
+            <a className="dropdown-item" href="#">
+              Ana Yemekler
+            </a>
+          </li>
+          <hr className="dropdown-divider" />
+          <li>
+            <a className="dropdown-item" href="#">
+              Aperatifler
+            </a>
+          </li>
+          <hr className="dropdown-divider" />
+          <li>
+            <a className="dropdown-item" href="#">
+              Çorbalar
+            </a>
+          </li>
+          <li>
+            <hr className="dropdown-divider" />
+          </li>
+          <li>
+            <a className="dropdown-item" href="#">
+              Tatlılar
+            </a>
+          </li>
+        </ul>
       </div>
 
-      <table className="table">
+      <table className="table" style={{ borderRadius: '15px' }}>
         <thead>
           <tr>
             <th style={{ textAlign: 'left' }}>

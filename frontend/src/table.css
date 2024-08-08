@@ -3,6 +3,24 @@ body {
   font-family: Arial, sans-serif;
 }
 
+.table-container {
+  position: relative;
+}
+
+.search-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+}
+
 .table {
   width: 100%;
   background-color: white;
@@ -10,24 +28,11 @@ body {
   border-collapse: collapse;
   border-spacing: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* overflow-y: auto kaldırıldı, tablo yatay kaydırma için */
   border-radius: 15px;
 }
 
 .table thead {
   border-radius: 30px;
-}
-
-.list {
-  text-align: center;
-  font-size: 18px;
-  padding-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 5px;
-}
-
-.list:hover {
-  background-color: #c2c2c24d;
 }
 
 .table th,
@@ -39,6 +44,7 @@ body {
   font-size: 16px;
 }
 
+<<<<<<< HEAD
 .search-inputs {
   flex-direction: row;
 }
@@ -69,13 +75,10 @@ body {
   order: 1; 
 }
 
+=======
+>>>>>>> 69b78dcf2c85afa0c13b81edc0d11be14b8b91bf
 .table tbody tr:nth-child(even) {
   background-color: #f9f9f9;
-}
-
-.table input[type='checkbox'] {
-  margin-right: 5px;
-  cursor: pointer;
 }
 
 .table .toggle {
@@ -85,10 +88,6 @@ body {
 .table .toggle svg {
   font-size: 1.5em;
   cursor: pointer;
-}
-
-.table-checkbox-right {
-  text-align: center !important;
 }
 
 .table-checkbox-left {
@@ -120,6 +119,7 @@ tr:hover {
   transition: background-color 0.2s, color 0.3s;
 }
 
+<<<<<<< HEAD
 /* @keyframes slideInDown {
   from {
     transform: translateY(-50%);
@@ -171,6 +171,20 @@ tr:hover {
     overflow-y: scroll; 
     display: block; 
     white-space: nowrap; 
+=======
+@media (max-width: 768px) {
+  .table {
+    font-size: 14px;
+    overflow-y: scroll;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .search-container {
+    width: 100%;
+    position: relative;
+    margin-top: 10px;
+>>>>>>> 69b78dcf2c85afa0c13b81edc0d11be14b8b91bf
   }
 }
 
@@ -178,5 +192,45 @@ tr:hover {
   .table th,
   .table td {
     font-size: 12px;
+<<<<<<< HEAD
   }
 } */
+=======
+  }
+
+  .search-container {
+    width: 100%;
+  }
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+@media (max-width: 500px) {
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+.btn-group .search-button {
+  order: 2;
+}
+
+.btn-group .add-button {
+  order: 1;
+}
+
+.btn.btn-primary.dropdown-toggle {
+  width: 100%;
+  margin-right: 80%;
+  height: 40px;
+}
+>>>>>>> 69b78dcf2c85afa0c13b81edc0d11be14b8b91bf
