@@ -108,6 +108,7 @@ body {
   .menu-icon.open {
     right: calc(65% - 40px);
   }
+  
 
   .side-link {
     font-size: 20px;
