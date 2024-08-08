@@ -121,7 +121,7 @@ const Table = () => {
         </ul>
       </div>
 
-      <table className="table" style={{ borderRadius: '30px' }}>
+      <table className="table" style={{ borderRadius: '15px' }}>
         <thead>
           <tr>
             <th style={{ textAlign: 'left' }}>

@@ -11,7 +11,7 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 45%; /* Tablo genişliğinin yaklaşık yarısından biraz küçük */
+  width: 45%;
   display: flex;
   gap: 5px;
   align-items: center;
