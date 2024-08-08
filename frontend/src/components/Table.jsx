@@ -100,11 +100,13 @@ const Table = () => {
               Ana Yemekler
             </a>
           </li>
+          <hr className="dropdown-divider" />
           <li>
             <a className="dropdown-item" href="#">
               Aperatifler
             </a>
           </li>
+          <hr className="dropdown-divider" />
           <li>
             <a className="dropdown-item" href="#">
               Çorbalar
