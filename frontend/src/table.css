@@ -47,10 +47,11 @@ body {
   display: flex;
   flex-wrap: nowrap;
   gap: 10px;
+  width: 
 }
 @media (max-width: 500px) {
   .btn-group {
-    flex-direction: column; /* Ekran küçükse butonları dikey düzenle */
+    flex-direction: column;
   }
 
   .btn-group .btn {
@@ -175,6 +176,6 @@ tr:hover {
 @media (max-width: 480px) {
   .table th,
   .table td {
-    font-size: 12px; /* Daha küçük yazı boyutu */
+    font-size: 12px; 
   }
 }
