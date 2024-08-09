@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Table = () => {
+
   const [rows, setRows] = useState([
     {
       id: 1392,
@@ -63,6 +64,11 @@ const Table = () => {
     );
   };
 
+  const [record, setRecord] = useState(rows)
+  const Filter = (event) =>{
+    setRecord(rows.filter(f => f.name.toLocaleLowerCase().includes(event.target.value)))
+  } 
+
   return (
     <div className="table-container">
       <div className="btn-group" role="group">
@@ -80,48 +86,7 @@ const Table = () => {
         </ul>
       </div>
 
-      <div className="search-container">
-        <input
-          type="text"
-          className="form-control search-input"
-          aria-label="Text input with segmented dropdown button"
-        />
-        <button
-          type="button"
-          className="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Kategoriler
-        </button>
-        <ul className="dropdown-menu dropdown-menu-end">
-          <li>
-            <a className="dropdown-item" href="#">
-              Ana Yemekler
-            </a>
-          </li>
-          <hr className="dropdown-divider" />
-          <li>
-            <a className="dropdown-item" href="#">
-              Aperatifler
-            </a>
-          </li>
-          <hr className="dropdown-divider" />
-          <li>
-            <a className="dropdown-item" href="#">
-              Çorbalar
-            </a>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Tatlılar
-            </a>
-          </li>
-        </ul>
-      </div>
+     <input type="text" className='form-control' onChange={Filter} />
 
       <table className="table" style={{ borderRadius: '15px' }}>
         <thead>
@@ -143,7 +108,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {rows.map(row => (
+          {record.map((row) => (
             <tr
               key={row.id}
               className={row.isToggled ? 'faded disabled' : ''}
