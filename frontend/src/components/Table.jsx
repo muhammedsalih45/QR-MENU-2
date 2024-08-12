@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import '../table.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faToggleOn,
-  faToggleOff,
-  faMagnifyingGlass,
-} from '@fortawesome/free-solid-svg-icons';
+import { faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 
 const Table = () => {
   const [rows, setRows] = useState([
@@ -67,7 +63,7 @@ const Table = () => {
 
   const Filter = event => {
     setRecord(
-      data.filter(f => f.name.toLowerCase().includes(event.target.value)),
+      rows.filter(f => f.name.toLowerCase().includes(event.target.value)),
     );
   };
 
