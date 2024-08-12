@@ -3,17 +3,19 @@ import React from 'react';
 import Form from '../components/Form';
 import Table2 from '../components/Table2';
 import Table from '../components/Table';
-import Sort from '../components/Sort';
+// import Sort from '../components/Sort';
 function Content({ selectedComponent }) {
   if (selectedComponent === 'Form') {
-    return <Form />;  
+    return <Form />;
   } else if (selectedComponent === 'Foods') {
     return <Table2 />;
   } else if (selectedComponent === 'Settings') {
     return <div>You are in Settings Component</div>;
-  } else if (selectedComponent === 'Sort') {
-    return <Sort/>;
-  }else {
+  }
+  //  else if (selectedComponent === 'Sort') {
+  //   return <Sort />;
+  // }
+  else {
     return <div>Select an option from the menu</div>;
   }
 }

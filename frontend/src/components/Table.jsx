@@ -63,6 +63,14 @@ const Table = () => {
     );
   };
 
+  const [record, setRecord] = useState(rows);
+
+  const Filter = event => {
+    setRecord(
+      data.filter(f => f.name.toLowerCase().includes(event.target.value)),
+    );
+  };
+
   return (
     <div className="table-container">
       <div className="btn-group" role="group">
@@ -85,6 +93,7 @@ const Table = () => {
           type="text"
           className="form-control search-input"
           aria-label="Text input with segmented dropdown button"
+          onChange={Filter}
         />
         <button
           type="button"
@@ -143,7 +152,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {rows.map(row => (
+          {record.map(row => (
             <tr
               key={row.id}
               className={row.isToggled ? 'faded disabled' : ''}
