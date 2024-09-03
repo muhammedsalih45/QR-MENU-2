@@ -12,14 +12,11 @@ function Content({ selectedComponent }) {
     return <Table2 />;
   } else if (selectedComponent === 'Settings') {
     return <div>You are in Settings Component</div>;
-  }
-  //  else if (selectedComponent === 'Sort') {
-  //   return <Sort />;
-  // }
-  // else if (selectedComponent === 'Sort') {
-  //   return ;
-  // }
-  else {
+  } else if (selectedComponent === 'Sort') {
+    return <Sort />;
+  } else if (selectedComponent === 'Sort') {
+    return;
+  } else {
     return <div>Select an option from the menu</div>;
   }
 }
